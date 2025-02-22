@@ -1,6 +1,6 @@
 {
   "name": "add-timecode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add timecode to 24p video file based on creation time.",
   "main": "index.js",
   "bin": {
