@@ -1,0 +1,18 @@
+{
+  "name": "add-timecode",
+  "version": "1.0.0",
+  "description": "Add timecode to 24p video file based on creation time.",
+  "main": "index.js",
+  "bin": {
+    "add-timecode": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"no test specified\" && exit 1"
+  },
+  "author": "mkuzmick",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "yargs": "^17.7.2"
+  }
+}
