@@ -29,7 +29,13 @@ const argv = require('yargs')
     type: 'string',
     description: 'Path to a folder to watch for new files',
   })
-  .demandCommand(1, 'You must provide a video file or a folder to watch')
+  // Instead of demanding a positional command, we add a check:
+  .check((argv) => {
+    if (!argv.watch && argv._.length === 0) {
+      throw new Error("You must provide a video file or a folder to watch");
+    }
+    return true;
+  })
   .help()
   .argv;
 
