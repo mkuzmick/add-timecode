@@ -82,12 +82,16 @@ function addTimecode(inputFile, options = {}) {
         execSync(cmd, { stdio: 'inherit' });
         console.log(`Timecode ${timecode} added successfully to ${outputFile}`);
 
-        // If destructive mode is enabled, delete the original file and rename the new one.
         if (options.destructive) {
+          // Delete the original file regardless.
           fs.unlinkSync(inputFile);
-          fs.renameSync(outputFile, inputFile);
-          console.log(`Replaced original file with updated file.`);
-          outputFile = inputFile;
+          console.log(`Original file ${inputFile} deleted.`);
+          // Only rename if no rename flag was provided.
+          if (!options.rename) {
+            fs.renameSync(outputFile, inputFile);
+            console.log(`New file renamed to ${inputFile}.`);
+            outputFile = inputFile;
+          }
         }
 
         resolve({ timecode, outputFile, createdTimeFormatted });
